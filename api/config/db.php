@@ -19,6 +19,7 @@ function loadEnv($path)
     }
 }
 
+# PDO is PHP’s database interface. We use it to connect to MySQL and execute prepared statements
 function getDatabaseConnection()
 {
     loadEnv(__DIR__ . "/../../.env");
