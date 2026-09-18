@@ -1,15 +1,38 @@
 <?php
 
+function loadEnv($path)
+{
+    if (!file_exists($path)) {
+        throw new Exception(".env file not found");
+    }
+
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    foreach ($lines as $line) {
+        if (str_starts_with(trim($line), "#")) {
+            continue;
+        }
+
+        [$key, $value] = explode("=", $line, 2);
+
+        $_ENV[trim($key)] = trim($value);
+    }
+}
+
 function getDatabaseConnection()
 {
-    $host = "DB_HOST";
-    $db   = "DB_NAME";
-    $user = "DB_USER";
-    $pass = "DB_PASSWORD";
+    loadEnv(__DIR__ . "/../../.env");
+
+    $host = $_ENV["DB_HOST"];
+    $db   = $_ENV["DB_NAME"];
+    $user = $_ENV["DB_USER"];
+    $pass = $_ENV["DB_PASSWORD"];
+    $port = $_ENV["DB_PORT"] ?? "3306";
+    $charset = $_ENV["DB_CHARSET"] ?? "utf8mb4";
 
     try {
         $pdo = new PDO(
-            "mysql:host=$host;dbname=$db;charset=utf8mb4",
+            "mysql:host=$host;port=$port;dbname=$db;charset=$charset",
             $user,
             $pass
         );
