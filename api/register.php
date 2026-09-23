@@ -65,8 +65,8 @@ $passwordHash = password_hash(
 
 $stmt = $pdo->prepare(
     "INSERT INTO Users
-    (FirstName, LastName, Login, Password, DateCreated, DateUpdated)
-    VALUES (?, ?, ?, ?, NOW(), NOW())"
+    (FirstName, LastName, Login, Password, DateCreated, DateUpdated, Role, IsEnabled)
+    VALUES (?, ?, ?, ?, NOW(), NOW(), 'User', 1)"
 );
 
 $stmt->execute([

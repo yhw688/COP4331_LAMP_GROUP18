@@ -32,7 +32,7 @@ if (empty($login) || empty($password)) {
 $pdo = getDatabaseConnection();
 
 $stmt = $pdo->prepare(
-    "SELECT ID, FirstName, LastName, Login, Password
+    "SELECT ID, FirstName, LastName, Login, Password, Role, IsEnabled
      FROM Users
      WHERE Login = ?"
 );
@@ -52,7 +52,22 @@ if (!$user || !password_verify($password, $user["Password"])) {
     exit();
 }
 
+if (!$user["IsEnabled"]) {
+    http_response_code(403);
+
+    echo json_encode([
+        "error" => "Account is disabled"
+    ]);
+
+    exit();
+}
+
+/* Store authenticated user information on the server */
+$_SESSION["user_id"] = $user["ID"];
+$_SESSION["role"] = $user["Role"];
+
 unset($user["Password"]);
+unset($user["IsEnabled"]);
 
 http_response_code(200);
 
