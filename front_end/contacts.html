@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+        <title>Contact Manager</title>
+        <script type="text/javascript" src="js/code.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function()
+        {
+                readCookie();
+                clearContactList();
+        }, false);
+        </script>
+</head>
+<body>
+
+<main class="appShell">
+        <section class="topBar">
+            <div class="topBarLeft">
+
+                <div>
+                    <h1 id="contactTitle">NexusContact</h1>
+                    <span id="userName"></span>
+                </div>
+            </div>
+
+            <button type="button" id="logoutButton" class="secondaryButton" onclick="doLogout();">Log Out</button>
+        </section>
+
+        <section class="contactToolbar">
+                <input type="text" id="contactSearchText" placeholder="Search contacts" onkeyup="searchContacts();" />
+                <button type="button" class="primaryButton" onclick="searchContacts();">Search</button>
+                <button type="button" class="secondaryButton" onclick="showAllContacts();">Show All Contacts</button>
+        </section>
+
+        <section class="contactLayout">
+                <form id="addContactForm" class="contactForm" onsubmit="addContact(); return false;">
+                        <h2>Add Contact</h2>
+                        <input type="text" id="contactFirstName" placeholder="First Name" />
+                        <span id="contactFirstNameError" class="fieldError"></span>
+
+                        <input type="text" id="contactLastName" placeholder="Last Name" />
+                        <span id="contactLastNameError" class="fieldError"></span>
+
+                        <input type="tel" id="contactPhone" placeholder="Phone" />
+                        <span id="contactPhoneError" class="fieldError"></span>
+
+                        <input type="email" id="contactEmail" placeholder="Email" />
+                        <span id="contactEmailError" class="fieldError"></span>
+                        <button type="submit" class="primaryButton">Add Contact</button>
+                        <span id="contactAddResult" class="successMessage"></span>
+                </form>
+
+                <section class="contactResults">
+                        <div class="resultsHeader">
+                                <h2>Contacts</h2>
+                                <span id="contactSearchResult" class="statusMessage"></span>
+                        </div>
+                        <div class="contactTableWrap">
+                                <table class="contactTable">
+                                        <thead>
+                                                <tr>
+                                                        <th>Name</th>
+                                                        <th>Phone</th>
+                                                        <th>Email</th>
+                                                        <th>Date Added</th>
+                                                        <th>Actions</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody id="contactList">
+                                                <tr>
+                                                        <td colspan="5" class="emptyState">No contacts loaded yet.</td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+                        </div>
+                </section>
+        </section>
+</main>
+
+</body>
+</html>

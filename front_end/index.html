@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>NexusContact Log In</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main class="authPage">
+
+        <section class="brandSide">
+            <h1>Welcome to NexusContact</h1>
+            <p>Login or register to manage your contacts online</p>
+        </section>
+
+        <section class="formSide">
+            <form id="loginForm" class="authForm">
+                <h2>Log In</h2>
+
+                <div>
+                    <label for="login">Username:</label>
+                    <input type="text" id="login" name="login" placeholder="username">
+                    <span id="loginError" class="fieldError"></span>
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="password">
+                    <span id="passwordError" class="fieldError"></span>
+                </div>
+
+                <button type="submit">Login</button>
+
+                <p>
+                    Not registered yet?
+                    <a href="register.html">Register here</a>
+                </p>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
