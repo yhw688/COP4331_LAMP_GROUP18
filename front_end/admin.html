@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+        <title>Admin Dashboard - NexusContact</title>
+        <script type="text/javascript" src="js/admin.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function()
+        {
+                readCookie();
+                searchUsers();
+                searchAdminContacts();
+        }, false);
+        </script>
+</head>
+<body>
+
+<main class="appShell">
+        <section class="topBar">
+            <div class="topBarLeft">
+
+                <div>
+                    <h1 id="contactTitle">Admin Control Panel</h1>
+                    <span id="userName"></span>
+                </div>
+            </div>
+
+            <button type="button" id="logoutButton" class="secondaryButton" onclick="doLogout();">Log Out</button>
+        </section>
+
+        <!-- User Management Section -->
+        <section class="contactToolbar">
+                <input type="text" id="userSearchText" placeholder="Search users by name or login" onkeyup="searchUsers();" />
+                <button type="button" class="primaryButton" onclick="searchUsers();">Search Users</button>
+        </section>
+
+        <section class="contactResults" style="margin-bottom: 40px;">
+                <div class="resultsHeader">
+                        <h2>Manage Users</h2>
+                </div>
+                <div class="contactTableWrap">
+                        <table class="contactTable">
+                                <thead>
+                                        <tr>
+                                                <th>Name</th>
+                                                <th>Username</th>
+                                                <th>Role</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                        </tr>
+                                </thead>
+                                <tbody id="userList">
+                                        <tr>
+                                                <td colspan="5" class="emptyState">Loading users...</td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+        </section>
+
+        <!-- Global Contacts Section -->
+        <section class="contactToolbar">
+                <input type="text" id="contactSearchText" placeholder="Search global contacts" onkeyup="searchAdminContacts();" />
+                <button type="button" class="primaryButton" onclick="searchAdminContacts();">Search Contacts</button>
+        </section>
+
+        <section class="contactResults">
+                <div class="resultsHeader">
+                        <h2>Global Contacts Database</h2>
+                </div>
+                <div class="contactTableWrap">
+                        <table class="contactTable">
+                                <thead>
+                                        <tr>
+                                                <th>Contact Name</th>
+                                                <th>Phone</th>
+                                                <th>Email</th>
+                                                <th>Owner (Login)</th>
+                                        </tr>
+                                </thead>
+                                <tbody id="adminContactList">
+                                        <tr>
+                                                <td colspan="4" class="emptyState">Loading contacts...</td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+        </section>
+</main>
+
+</body>
+</html>
