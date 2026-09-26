@@ -1,0 +1,451 @@
+/* Accessible orange color scheme */
+:root {
+    --orange: #B45309;
+    --orange-dark: #92400E;
+    --charcoal: #1F2937;
+    --cream: #FFF7ED;
+    --light-cream: #FFFBF5;
+    --white: #FFFFFF;
+    --light-gray: #F3F4F6;
+    --border-gray: #D1D5DB;
+    --error-red: #B91C1C;
+    --text: #111827;
+}
+
+/* General page style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cream);
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+
+/* Main login/register layout */
+.authPage {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Left logo/text side */
+.brandSide {
+    width: 50%;
+    background-color: var(--light-cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 460px;
+    max-width: 95%;
+    margin-bottom: 35px;
+    animation: logoPop 0.7s ease-out;
+}
+
+.brandSide h1 {
+    color: var(--charcoal);
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.brandSide p {
+    color: var(--charcoal);
+    font-size: 21px;
+    max-width: 480px;
+    line-height: 1.5;
+}
+
+/* Right form side */
+.formSide {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* Form box */
+.authForm {
+    width: 430px;
+    padding: 36px;
+    background-color: var(--white);
+    border-radius: 14px;
+    border-top: 9px solid var(--orange);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.authForm h2 {
+    text-align: center;
+    color: var(--charcoal);
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--charcoal);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* Text boxes */
+input {
+    width: 100%;
+    padding: 13px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-gray);
+    border-radius: 7px;
+    margin-bottom: 12px;
+    background-color: var(--white);
+    color: var(--text);
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 3px solid #FDBA74;
+    border-color: var(--orange);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 13px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 17px;
+}
+
+button:hover {
+    background-color: var(--orange-dark);
+}
+
+button:focus {
+    outline: 3px solid #FDBA74;
+    outline-offset: 2px;
+}
+
+/* Text under forms */
+p {
+    text-align: center;
+    color: var(--text);
+}
+
+/* Links */
+a {
+    color: var(--orange-dark);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--charcoal);
+}
+
+/* Error messages */
+.fieldError {
+    display: none;
+    color: var(--error-red);
+    background-color: #FEF2F2;
+    border-left: 4px solid var(--error-red);
+    padding: 6px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.inputError {
+    border: 2px solid var(--error-red);
+}
+
+/* Password hint */
+.passwordHint {
+    font-size: 12px;
+    color: var(--charcoal);
+    text-align: left;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* Smooth logo pop-in animation */
+@keyframes logoPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Contacts page styles */
+.appShell {
+    min-height: 100vh;
+    padding: 0 40px 40px 40px;
+    box-sizing: border-box;
+    background-color: var(--cream);
+}
+
+/* Contacts top bar */
+.topBar {
+    width: 100%;
+    margin: 0;
+    padding: 18px 40px;
+    box-sizing: border-box;
+    background-color: var(--charcoal);
+    border-radius: 0;
+    border-bottom: 5px solid var(--orange);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topBarLeft {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topBarLogo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+#contactTitle {
+    margin: 0;
+    color: var(--white);
+    font-size: 30px;
+}
+
+#userName {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Logout button */
+#logoutButton {
+    width: auto;
+    padding: 12px 24px;
+    margin-top: 0;
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+#logoutButton:hover {
+    background-color: var(--orange-dark);
+}
+
+/* Search bar area */
+.contactToolbar {
+    display: flex;
+    gap: 12px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin: 25px 0;
+}
+
+.contactToolbar input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.contactToolbar button {
+    width: 140px;
+    margin-top: 0;
+}
+
+/* Add contact + contact table layout */
+.contactLayout {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* Add contact form */
+.contactForm {
+    width: 330px;
+    margin: 0;
+    padding: 25px;
+    background-color: var(--white);
+    border-radius: 14px;
+    border-top: 8px solid var(--orange);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contactForm h2 {
+    text-align: center;
+    color: var(--charcoal);
+    margin-top: 0;
+}
+
+/* Contact results box */
+.contactResults {
+    flex: 1;
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 14px;
+    border-top: 8px solid var(--orange);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resultsHeader h2 {
+    color: var(--charcoal);
+    margin-top: 0;
+}
+
+/* Table */
+.contactTableWrap {
+    overflow-x: auto;
+}
+
+.contactTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contactTable th {
+    background-color: var(--charcoal);
+    color: var(--white);
+    padding: 12px;
+    text-align: left;
+}
+
+.contactTable td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-gray);
+    color: var(--text);
+}
+
+.emptyState {
+    text-align: center;
+    color: var(--charcoal);
+}
+
+.statusMessage {
+    color: var(--orange-dark);
+    font-weight: bold;
+}
+
+/* Edit/Delete buttons side by side */
+.actionButtons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionButtons button {
+    width: auto;
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.editButton {
+    background-color: var(--charcoal);
+    color: var(--white);
+}
+
+.deleteButton {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.editButton:hover {
+    background-color: #374151;
+}
+
+.deleteButton:hover {
+    background-color: var(--orange-dark);
+}
+
+/* Mobile layout */
+@media (max-width: 900px) {
+    .authPage {
+        flex-direction: column;
+    }
+
+    .brandSide,
+    .formSide {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .brandSide {
+        padding: 35px 20px;
+    }
+
+    .formSide {
+        padding: 25px;
+    }
+
+    .brandSide h1 {
+        font-size: 32px;
+    }
+
+    .brandSide p {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 330px;
+    }
+
+    .authForm {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .contactLayout {
+        flex-direction: column;
+    }
+
+    .contactForm {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .contactToolbar {
+        flex-direction: column;
+    }
+
+    .contactToolbar button {
+        width: 100%;
+    }
+
+    .topBar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .topBarLeft {
+        flex-direction: column;
+    }
+}
