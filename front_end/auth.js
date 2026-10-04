@@ -128,10 +128,10 @@ if (registerForm) {
         const data = await response.json();
 
         //if the registration was successful, redirect to the login page
-        if (data.error === "") {
+        if (response.ok) {
             window.location.href = "index.html";
         } else {
-            alert(data.error);
+            alert(data.error || "Registration failed.");
         }
     });
 }
