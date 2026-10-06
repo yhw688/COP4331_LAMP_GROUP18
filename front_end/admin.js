@@ -1,4 +1,4 @@
-const urlBase = 'https://yihanwang.fit/api';
+const urlBase = 'https://lamp.yihanwang.fit/api';
 const extension = 'php';
 
 let userId = 0;
