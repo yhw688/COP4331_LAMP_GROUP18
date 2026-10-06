@@ -176,3 +176,51 @@ function changeUserPassword(targetUserId) {
     };
     xhr.send(JSON.stringify(tmp));
 }
+
+function createAdmin() {
+    let firstName = document.getElementById("newAdminFirstName").value;
+    let lastName = document.getElementById("newAdminLastName").value;
+    let login = document.getElementById("newAdminLogin").value;
+    let password = document.getElementById("newAdminPassword").value;
+    let resultSpan = document.getElementById("createAdminResult");
+
+    // The payload exactly matches what admin/users.php expects for a POST request
+    let payload = {
+        firstName: firstName,
+        lastName: lastName,
+        login: login,
+        password: password
+    };
+
+    let url = urlBase + '/admin/users.php'; 
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            let jsonObject = JSON.parse(xhr.responseText);
+
+            if (this.status == 201) {
+                resultSpan.innerHTML = "Admin created successfully!";
+                resultSpan.style.color = "green";
+                
+                // Clear the form fields
+                document.getElementById("newAdminFirstName").value = "";
+                document.getElementById("newAdminLastName").value = "";
+                document.getElementById("newAdminLogin").value = "";
+                document.getElementById("newAdminPassword").value = "";
+                
+                // Refresh the table to show the brand new admin
+                searchUsers();
+            } else {
+                // Displays backend errors like "Username already exists"
+                resultSpan.innerHTML = jsonObject.error || "Failed to create admin.";
+                resultSpan.style.color = "red";
+            }
+        }
+    };
+
+    xhr.send(JSON.stringify(payload));
+}
