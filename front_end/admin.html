@@ -29,6 +29,17 @@
             <button type="button" id="logoutButton" class="secondaryButton" onclick="doLogout();">Log Out</button>
         </section>
 
+       <!-- Create New Admin Form -->
+        <section class="contactToolbar" style="margin-bottom: 20px; gap: 10px; display: flex; align-items: center; flex-wrap: wrap;">
+                <h2 style="color: white; margin: 0 10px 0 0; font-size: 1.2em;">Create Admin:</h2>
+                <input type="text" id="newAdminFirstName" placeholder="First Name" />
+                <input type="text" id="newAdminLastName" placeholder="Last Name" />
+                <input type="text" id="newAdminLogin" placeholder="Username" />
+                <input type="password" id="newAdminPassword" placeholder="Password" />
+                <button type="button" class="primaryButton" onclick="createAdmin()">Create</button>
+                <span id="createAdminResult" style="color: white; margin-left: 10px;"></span>
+        </section>
+
         <!-- User Management Section -->
         <section class="contactToolbar">
                 <input type="text" id="userSearchText" placeholder="Search users by name or login" onkeyup="searchUsers();" />
