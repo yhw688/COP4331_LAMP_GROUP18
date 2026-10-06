@@ -119,18 +119,23 @@ function addContact()
         {
                 xhr.onreadystatechange = function()
                 {
-                        if (this.readyState == 4 && this.status == 200)
+                        if (this.readyState == 4) 
                         {
                                 let jsonObject = JSON.parse(xhr.responseText);
-                                if (jsonObject.error && jsonObject.error.length > 0)
+                                
+                                // 201 is the success code sent by your PHP backend
+                                if (this.status == 201) 
                                 {
-                                        document.getElementById("contactAddResult").innerHTML = jsonObject.error;
-                                        return;
+                                        document.getElementById("addContactForm").reset();
+                                        document.getElementById("contactAddResult").innerHTML = "Contact has been added.";
+                                        // Refresh the table to show the new contact
+                                        searchContacts(); 
+                                } 
+                                else 
+                                {
+                                        // Catches 400 errors and displays the backend message
+                                        document.getElementById("contactAddResult").innerHTML = jsonObject.error || "Failed to add contact.";
                                 }
-
-                                document.getElementById("addContactForm").reset();
-                                document.getElementById("contactAddResult").innerHTML = "Contact has been added.";
-                                clearContactList();
                         }
                 };
                 xhr.send(jsonPayload);
